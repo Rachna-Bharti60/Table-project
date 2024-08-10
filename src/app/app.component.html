@@ -1,0 +1,37 @@
+<div>
+    <input type="text" placeholder="Search by name" [(ngModel)]="searchName" />
+
+    <select [(ngModel)]="selectedCity">
+        <option value="">All Cities</option>
+        <option *ngFor="let city of uniqueCities">{{ city }}</option>
+    </select>
+
+    <select [(ngModel)]="selectedGender">
+        <option value="">All Genders</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+</div>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Location</th>
+            <th>Age</th>
+            <th>Gender</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of filteredUsers">
+            <td>{{ user.firstname }} {{ user.lastname }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.mobile }}</td>
+            <td>{{ user.city }}, {{ user.state }}</td>
+            <td>{{ calculateAge(user.dateOfBirth) }}</td>
+            <td>{{ user.gender }}</td>
+        </tr>
+    </tbody>
+</table>

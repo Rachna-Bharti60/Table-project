@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="header">
+        <h2>ALL MEMBERS</h2>
+        <div class="filters">
+            <input
+                type="text"
+                placeholder="Search by name . . ."
+                [(ngModel)]="filterName"
+            />
+
+            <select [(ngModel)]="filterCity">
+                <option value="">City</option>
+                <option *ngFor="let city of cities" [value]="city">
+                    {{ city }}
+                </option>
+            </select>
+
+            <select [(ngModel)]="filterGender">
+                <option value="">Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Location</th>
+                <th>Age</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let member of filteredMembers()">
+                <td>{{ member.firstname }} {{ member.lastname }}</td>
+                <td>{{ member.email }}</td>
+                <td>{{ member.mobile }}</td>
+                <td>
+                    {{ member.city }}, {{ member.state }}, {{ member.pincode }}
+                </td>
+                <td>{{ calculateAge(member.dateOfBirth) }}</td>
+                <td>{{ member.gender }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
